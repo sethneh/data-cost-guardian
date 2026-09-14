@@ -1,0 +1,10 @@
+streamlit>=1.32
+plotly>=5.18
+pandas>=2.0
+numpy>=1.26
+pyyaml>=6.0
+python-dotenv>=1.0
+requests>=2.31
+snowflake-connector-python>=3.7
+databricks-sdk>=0.28
+pytest>=8.0

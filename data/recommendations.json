@@ -1,0 +1,108 @@
+[
+  {
+    "id": "sustained_baseline:snowflake:COMPUTE_WH",
+    "platform": "snowflake",
+    "service": "COMPUTE_WH",
+    "type": "sustained_baseline",
+    "title": "COMPUTE_WH holds a steady $222.64/day baseline \u2014 evaluate committed-use / reserved pricing",
+    "evidence": {
+      "weekday_daily_avg_usd": "222.64",
+      "weekday_cv": "0.07",
+      "est_monthly_usd": "6,679.21",
+      "assumption": "15% commitment discount (assumption \u2014 validate against your actual contract)",
+      "savings_math": "$6,679.21 x 15% discount"
+    },
+    "projected_monthly_savings_usd": 1001.88,
+    "confidence": "medium",
+    "effort": "low",
+    "rationale": "COMPUTE_WH's weekday spend barely moves (CV 0.07), so the baseline is predictable enough to pre-commit. Downsize or eliminate idle capacity first \u2014 commitments lock in whatever you buy."
+  },
+  {
+    "id": "sustained_baseline:snowflake:ANALYTICS_WH",
+    "platform": "snowflake",
+    "service": "ANALYTICS_WH",
+    "type": "sustained_baseline",
+    "title": "ANALYTICS_WH holds a steady $140.25/day baseline \u2014 evaluate committed-use / reserved pricing",
+    "evidence": {
+      "weekday_daily_avg_usd": "140.25",
+      "weekday_cv": "0.07",
+      "est_monthly_usd": "4,207.57",
+      "assumption": "15% commitment discount (assumption \u2014 validate against your actual contract)",
+      "savings_math": "$4,207.57 x 15% discount"
+    },
+    "projected_monthly_savings_usd": 631.14,
+    "confidence": "medium",
+    "effort": "low",
+    "rationale": "ANALYTICS_WH's weekday spend barely moves (CV 0.07), so the baseline is predictable enough to pre-commit. Downsize or eliminate idle capacity first \u2014 commitments lock in whatever you buy."
+  },
+  {
+    "id": "sustained_baseline:databricks:etl-cluster",
+    "platform": "databricks",
+    "service": "etl-cluster",
+    "type": "sustained_baseline",
+    "title": "etl-cluster holds a steady $113.01/day baseline \u2014 evaluate committed-use / reserved pricing",
+    "evidence": {
+      "weekday_daily_avg_usd": "113.01",
+      "weekday_cv": "0.08",
+      "est_monthly_usd": "3,390.29",
+      "assumption": "15% commitment discount (assumption \u2014 validate against your actual contract)",
+      "savings_math": "$3,390.29 x 15% discount"
+    },
+    "projected_monthly_savings_usd": 508.54,
+    "confidence": "medium",
+    "effort": "low",
+    "rationale": "etl-cluster's weekday spend barely moves (CV 0.08), so the baseline is predictable enough to pre-commit. Downsize or eliminate idle capacity first \u2014 commitments lock in whatever you buy."
+  },
+  {
+    "id": "sustained_baseline:snowflake:INGEST_WH",
+    "platform": "snowflake",
+    "service": "INGEST_WH",
+    "type": "sustained_baseline",
+    "title": "INGEST_WH holds a steady $73.45/day baseline \u2014 evaluate committed-use / reserved pricing",
+    "evidence": {
+      "weekday_daily_avg_usd": "73.45",
+      "weekday_cv": "0.05",
+      "est_monthly_usd": "2,203.50",
+      "assumption": "15% commitment discount (assumption \u2014 validate against your actual contract)",
+      "savings_math": "$2,203.50 x 15% discount"
+    },
+    "projected_monthly_savings_usd": 330.53,
+    "confidence": "medium",
+    "effort": "low",
+    "rationale": "INGEST_WH's weekday spend barely moves (CV 0.05), so the baseline is predictable enough to pre-commit. Downsize or eliminate idle capacity first \u2014 commitments lock in whatever you buy."
+  },
+  {
+    "id": "weekend_burn:snowflake:DEV_WH",
+    "platform": "snowflake",
+    "service": "DEV_WH",
+    "type": "weekend_burn",
+    "title": "DEV_WH burns $37.64/day on weekends \u2014 add scheduled pause windows",
+    "evidence": {
+      "weekend_daily_avg_usd": "37.64",
+      "weekend_share_of_spend": "11.4%",
+      "assumption": "pausing every weekend saves ~8.57 weekend-days/month",
+      "savings_math": "$37.64 x 8.57 weekend-days/mo"
+    },
+    "projected_monthly_savings_usd": 322.54,
+    "confidence": "high",
+    "effort": "low",
+    "rationale": "Weekend spend is 11% of DEV_WH's total \u2014 unusual for a dev/test resource nobody queries on Saturdays. Scheduled suspend/resume windows remove it almost entirely."
+  },
+  {
+    "id": "model_cost_review:ai:gpt-4o",
+    "platform": "ai",
+    "service": "gpt-4o",
+    "type": "model_cost_review",
+    "title": "gpt-4o is pricey and spiky \u2014 review smaller-model routing for non-critical paths",
+    "evidence": {
+      "est_monthly_usd": "944.28",
+      "cv": "0.88",
+      "assumption": "30% of traffic routable to a smaller model (assumption \u2014 measure quality impact first)",
+      "savings_math": "$944.28 x 30% routable traffic"
+    },
+    "projected_monthly_savings_usd": 283.28,
+    "confidence": "medium",
+    "effort": "medium",
+    "rationale": "gpt-4o is the costliest AI model and its usage is spiky (CV 0.88), suggesting bursty non-critical workloads. Route evals, drafts, or retries to a smaller model \u2014 but quality trade-offs need human review before acting."
+  }
+]

@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-09-11T00:05:55.003022+00:00",
+  "window_days": 90,
+  "services_tracked": 9,
+  "kpis": {
+    "as_of": "2026-09-10",
+    "today_total": 904.68,
+    "averages": {
+      "7d": {
+        "avg": 768.28,
+        "delta_pct": 17.8
+      },
+      "30d": {
+        "avg": 774.38,
+        "delta_pct": 16.8
+      }
+    },
+    "per_platform": {
+      "ai": {
+        "today": 64.78,
+        "avg_7d": 50.88,
+        "delta_vs_7d_pct": 27.3
+      },
+      "databricks": {
+        "today": 279.69,
+        "avg_7d": 240.36,
+        "delta_vs_7d_pct": 16.4
+      },
+      "snowflake": {
+        "today": 560.21,
+        "avg_7d": 477.04,
+        "delta_vs_7d_pct": 17.4
+      }
+    }
+  },
+  "week_over_week": {
+    "current": 5313.54,
+    "previous": 5670.23,
+    "delta_pct": -6.29
+  },
+  "month_over_month": {
+    "current": 23255.06,
+    "previous": 22467.31,
+    "delta_pct": 3.51
+  },
+  "anomalies": [
+    {
+      "date": "2026-09-06",
+      "platform": "snowflake",
+      "service": "INGEST_WH",
+      "cost_usd": 140.49,
+      "baseline_30d_avg": 62.07,
+      "pct_over_avg": 126.3,
+      "z_score": 4.2,
+      "severity": "critical"
+    },
+    {
+      "date": "2026-08-28",
+      "platform": "databricks",
+      "service": "ml-cluster",
+      "cost_usd": 531.12,
+      "baseline_30d_avg": 145.4,
+      "pct_over_avg": 265.3,
+      "z_score": 9.33,
+      "severity": "critical"
+    },
+    {
+      "date": "2026-08-20",
+      "platform": "ai",
+      "service": "gpt-4o",
+      "cost_usd": 174.02,
+      "baseline_30d_avg": 26.82,
+      "pct_over_avg": 548.8,
+      "z_score": 19.47,
+      "severity": "critical"
+    }
+  ],
+  "top_drivers": [
+    {
+      "platform": "snowflake",
+      "service": "COMPUTE_WH",
+      "cost_usd": 5701.02,
+      "share_pct": 24.5,
+      "delta_vs_prev_pct": 0.6
+    },
+    {
+      "platform": "databricks",
+      "service": "ml-cluster",
+      "cost_usd": 4705.69,
+      "share_pct": 20.2,
+      "delta_vs_prev_pct": 10.9
+    },
+    {
+      "platform": "snowflake",
+      "service": "ANALYTICS_WH",
+      "cost_usd": 3631.04,
+      "share_pct": 15.6,
+      "delta_vs_prev_pct": 0.7
+    },
+    {
+      "platform": "databricks",
+      "service": "etl-cluster",
+      "cost_usd": 2901.64,
+      "share_pct": 12.5,
+      "delta_vs_prev_pct": 0.4
+    },
+    {
+      "platform": "snowflake",
+      "service": "DEV_WH",
+      "cost_usd": 2637.65,
+      "share_pct": 11.3,
+      "delta_vs_prev_pct": 0.7
+    }
+  ],
+  "config_used": {
+    "threshold_pct": 50.0,
+    "z_score": 2.5,
+    "min_cost_usd": 10.0,
+    "windows": [
+      7,
+      30
+    ]
+  }
+}

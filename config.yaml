@@ -1,0 +1,44 @@
+# ── Platforms ──────────────────────────────────────────────────────────────
+platforms:
+  snowflake:
+    enabled: true
+    credit_price_usd: 3.00          # used to convert credits → USD if connector returns credits
+  databricks:
+    enabled: true
+  ai:
+    enabled: true
+    csv_path: "data/ai_costs.csv"   # optional manual import: date,model,tokens_in,tokens_out,cost
+
+# ── Analysis windows (days) ──────────────────────────────────────────────────
+windows: [7, 30]
+
+# ── Alert rules ──────────────────────────────────────────────────────────────
+alerts:
+  threshold_pct: 50.0   # flag a service when its latest daily cost exceeds the
+                        # trailing-30d average by more than this percent
+  z_score: 2.5          # ...or when its z-score vs the trailing 30d exceeds this
+  min_cost_usd: 10.0    # ignore services spending less than this per day (noise filter)
+  slack_channel: "#data-cost-alerts"
+
+# ── Recommendations (v2) ─────────────────────────────────────────────────────
+recommendations:
+  enabled: true
+  idle:
+    idle_day_pct: 0.05        # a day counts as idle if cost < 5% of the p90 daily cost
+    min_idle_fraction: 0.25   # recommend when >=25% of trailing-30d days are idle
+  weekend:
+    dev_name_patterns: ["dev", "test", "sandbox", "staging"]
+    min_weekend_share: 0.10   # weekend spend >=10% of total → pause windows
+  commitment:
+    max_cv: 0.25              # weekday coefficient of variation must be this low
+    min_monthly_usd: 2000.0   # only workloads big enough to matter
+    discount_assumption: 0.15 # labeled as an assumption in evidence
+  model_review:
+    min_monthly_usd: 500.0
+    min_cv: 0.40              # spiky usage suggests bursty, routable workloads
+    routable_fraction_assumption: 0.30  # labeled as an assumption in evidence
+
+# ── Demo data ────────────────────────────────────────────────────────────────
+demo:
+  seed: 42
+  days: 90
