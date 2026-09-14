@@ -21,6 +21,7 @@ from pathlib import Path
 import yaml
 from dotenv import load_dotenv
 
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))  # allow `python -m src.main` and `python src/main.py`
 
